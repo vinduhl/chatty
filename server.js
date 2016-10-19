@@ -27,12 +27,13 @@ app.get("/", (req, res) => {
     'X-Frame-Options': 'SAMEORIGIN',
     'Content-Security-Policy': "default-src 'self' devmountain.github.io"
   })
-  .send(JSON.stringify(messages));
+  .send(JSON.stringify(messages.reverse()));
 })
 
 app.post("/", (req, res) => {
-  console.log(req.body);
+  //console.log(req.body);
   messages.push( {
+    username: req.body.username,
     message: req.body.message,
     time: new Date()
   });
@@ -45,7 +46,7 @@ app.post("/", (req, res) => {
     'X-Frame-Options': 'SAMEORIGIN',
     'Content-Security-Policy': "default-src 'self' devmountain.github.io"
   })
-  .send(JSON.stringify(messages));
+  .send(JSON.stringify(messages.reverse()));
 })
 
 

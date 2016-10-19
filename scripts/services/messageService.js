@@ -7,8 +7,9 @@ angular.module('chattyApp')
         return $http.get('http://localhost:8800');
       },
 
-      addMessage: function ( message ) {
-        return $http.post('http://localhost:8800', { message: message });
+      addMessage: function ( message, username ) {
+        console.log(message, username);
+        return $http.post('http://localhost:8800', { username: username, message: message });
       }
     };
   });

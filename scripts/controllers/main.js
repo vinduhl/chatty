@@ -6,11 +6,16 @@ angular.module('chattyApp')
       $scope.messages = response.data;
     });
 
-    $scope.addMessage = function ( message ) {
-      if (message) {
-        messageService.addMessage(message).then(function ( response ) {
+    $scope.addMessage = function ( message, username ) {
+
+      $scope.errorMessage = null;
+
+      if (message && username) {
+        messageService.addMessage(message, username).then(function ( response ) {
           $scope.messages = response.data;
         });
+      } else {
+        $scope.errorMessage = "Username and message are required!";
       }
     };
 
